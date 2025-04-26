@@ -9,13 +9,9 @@ const clients = [
     { name: "Test Client", phone: "000000", flag: "🇦🇫" },
 ];
 
-const Clients = () => {
+const Property = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
-
-    const filteredClients = clients.filter((client) =>
-        client.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     return (
         <div className="p-2 bg-[#F8FAFC] min-h-screen">
@@ -48,4 +44,4 @@ const Clients = () => {
     );
 };
 
-export default Clients;
+export default Property;
