@@ -2,10 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Clients from './pages/Clients';
-
-const Dashboard = () => <div>Dashboard</div>;
-const Properties = () => <div>Properties</div>;
-const Tenants = () => <div>Tenants</div>;
+import Property from './pages/Property';
+import Rentals from './pages/Rentals';
+import Broker from './pages/Broker';
 
 function App() {
   return (
@@ -15,8 +14,9 @@ function App() {
         <main className="flex-1 bg-[#F8FAFC] p-6">
           <Routes>
             <Route path="/" element={<Clients />} />
-            <Route path="/properties" element={<Properties />} />
-            <Route path="/tenants" element={<Tenants />} />
+            <Route path="/properties" element={<Property />} />
+            <Route path="/rentals" element={<Rentals />} />
+            <Route path="/broker" element={<Broker />} />
           </Routes>
         </main>
       </div>

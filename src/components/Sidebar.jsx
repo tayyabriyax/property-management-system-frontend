@@ -1,14 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { Building, Users, LogOut } from "lucide-react"; 
+import { Building, Users, LogOut, Settings, ContactRound } from "lucide-react"; 
 import React from "react";
 
 const Sidebar = () => {
   const links = [
     { name: "Clients", path: "/", icon: <Users /> },
     { name: "Properties", path: "/properties", icon: <Building /> },
-    { name: "Rental Contracts", path: "/tenants", icon: <Users /> },
+    { name: "Rental Contracts", path: "/rentals", icon: <ContactRound /> },
     { name: "Broker", path: "/broker", icon: <Users /> },
-    { name: "Setup", path: "/setup", icon: <Users /> },
+    { name: "Setup", path: "/setup", icon: <Settings /> },
     { name: "Logout", path: "/logout", icon: <LogOut /> },
   ];
 
@@ -22,7 +22,7 @@ const Sidebar = () => {
             to={path}
             className={({ isActive }) =>
               `flex items-center gap-3 px-2 py-3  rounded-lg hover:bg-blue-100 ${
-                isActive ? "bg-[#3B82F6]" : ""
+                isActive ? "bg-[#3B82F6] text-white" : ""
               }`
             }
           >
