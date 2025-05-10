@@ -23,7 +23,7 @@ const BrokerForm = () => {
                 label={"City"}
                 required={true} />
             <SelectField
-                label={"Country of Residence"}
+                label={"Country"}
                 required={true} />
             <InputField
                 label={"CNIC Number"}
@@ -36,12 +36,6 @@ const BrokerForm = () => {
                 type="file"
                 label={"Upload CNIC"}
                 required={false} />
-            <InputField
-                label={"Email"}
-                required={true} />
-            <InputField
-                label={"Password"}
-                required={true} />
 
             <textarea className="input col-span-3" placeholder="Remarks" rows="3" />
 

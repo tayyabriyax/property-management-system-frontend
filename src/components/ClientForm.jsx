@@ -90,7 +90,7 @@ const ClientForm = () => {
                 label={"City"}
                 required={true} />
             <SelectField
-                label={"Country of Residence"}
+                label={"Country"}
                 required={true} />
 
             <InputField

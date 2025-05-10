@@ -14,16 +14,13 @@ const RentalsForm = () => {
                 label={"Owner"}
                 required={true} />
             <InputField
-                label={"Broker A"}
+                label={"Broker"}
                 required={true} />
             <InputField
-                label={"Tenants"}
+                label={"Tenant"}
                 required={true} />
             <InputField
-                label={"Tenants PoA"}
-                required={false} />
-            <InputField
-                label={"Broker B"}
+                label={"Tenant PoA"}
                 required={false} />
             <InputField
                 type="file"

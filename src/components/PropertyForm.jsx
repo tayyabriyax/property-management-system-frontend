@@ -82,7 +82,7 @@ const PropertyForm = () => {
                 label={"Percentage"}
                 required={false} />
             <InputField
-                label={"Ammount"}
+                label={"Amount"}
                 required={false} />
 
             <div className="col-span-3 space-y-3 items-center pt-6 pb-4">
