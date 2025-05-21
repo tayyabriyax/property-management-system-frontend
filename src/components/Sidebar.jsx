@@ -6,7 +6,7 @@ const Sidebar = () => {
   const [openSetup, setOpenSetup] = useState(false);
 
   const links = [
-    { name: "Clients", path: "/", icon: <Users /> },
+    { name: "Clients", path: "/clients", icon: <Users /> },
     { name: "Properties", path: "/properties", icon: <Building /> },
     { name: "Rental Contracts", path: "/rentals", icon: <ContactRound /> },
     { name: "Broker", path: "/broker", icon: <Users /> },
