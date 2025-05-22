@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Layout = ({ children }) => {
 
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 };
 
 const PrivateRoute = ({ children }) => {
-    // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     return isAuthenticated ? children : <Navigate to="/" />;
 };
 

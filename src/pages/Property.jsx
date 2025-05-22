@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropertyTable from "../components/PropertyTable";
 import PropertyFormModal from "../components/PropertyFormModal";
-
-const properties = [
-    { name: "abc", phone: "+7345782", flag: "🇵🇰" },
-    { name: "sdf", phone: "+7345782", flag: "🇵🇰" },
-    { name: "Test 1", phone: "+7345782", flag: "🇮🇳" },
-    { name: "Test ", phone: "000000", flag: "🇦🇫" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getPropertiesAsync } from "../store/propertySlice";
 
 const Property = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const properties = useSelector((state) => state.property.properties);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPropertiesAsync());
+    }, [])
+
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Properties</h1>
 

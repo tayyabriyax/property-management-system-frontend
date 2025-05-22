@@ -9,7 +9,7 @@ import SubCommunity from './pages/SubCommunity';
 import Type from './pages/Type';
 import Developer from './pages/Developer';
 import Bank from './pages/Banks';
-import { Layout } from './Layout';
+import { Layout, PrivateRoute } from './Layout';
 import SignIn from './pages/SignIn';
 
 function App() {
@@ -18,16 +18,16 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/properties" element={<Property />} />
-          <Route path="/rentals" element={<Rentals />} />
-          <Route path="/broker" element={<Broker />} />
-          <Route path="/setup/view" element={<Views />} />
-          <Route path="/setup/community" element={<Community />} />
-          <Route path="/setup/sub-community" element={<SubCommunity />} />
-          <Route path="/setup/types" element={<Type />} />
-          <Route path="/setup/developers" element={<Developer />} />
-          <Route path="/setup/banks" element={<Bank />} />
+          <Route path="/clients" element={<PrivateRoute> <Clients /> </PrivateRoute>} />
+          <Route path="/properties" element={<PrivateRoute> <Property /> </PrivateRoute>} />
+          <Route path="/rentals" element={<PrivateRoute> <Rentals /> </PrivateRoute>} />
+          <Route path="/broker" element={<PrivateRoute> <Broker /> </PrivateRoute>} />
+          <Route path="/setup/view" element={<PrivateRoute> <Views /> </PrivateRoute>} />
+          <Route path="/setup/community" element={<PrivateRoute> <Community /> </PrivateRoute>} />
+          <Route path="/setup/sub-community" element={<PrivateRoute> <SubCommunity /> </PrivateRoute>} />
+          <Route path="/setup/types" element={<PrivateRoute> <Type /> </PrivateRoute>} />
+          <Route path="/setup/developers" element={<PrivateRoute> <Developer /> </PrivateRoute>} />
+          <Route path="/setup/banks" element={<PrivateRoute> <Bank /> </PrivateRoute>} />
         </Routes>
       </Layout>
     </Router>

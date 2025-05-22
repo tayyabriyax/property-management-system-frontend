@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ClientFormModal from "../components/ClientFormModal";
 import ClientTable from "../components/ClientTable";
-
-const clients = [
-    { name: "Hammad", phone: "+7345782", flag: "🇵🇰" },
-    { name: "Saba", phone: "+7345782", flag: "🇵🇰" },
-    { name: "Test 1", phone: "+7345782", flag: "🇮🇳" },
-    { name: "Test Client", phone: "000000", flag: "🇦🇫" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getClientsAsync } from "../store/clientSlice";
 
 const Clients = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
-    const filteredClients = clients.filter((client) =>
-        client.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const clients = useSelector((state) => state.client.clients);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getClientsAsync());
+    }, [])
 
     return (
         <div className="p-6 bg-[#F8FAFC] min-h-screen">

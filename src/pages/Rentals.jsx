@@ -1,21 +1,23 @@
-import React, { useState } from "react";
-import PropertyFormModal from "../components/PropertyFormModal";
+import React, { useEffect, useState } from "react";
 import RentalsTable from "../components/RentalsTable";
 import RentalsFormModal from "../components/RentalsFormModal";
-
-const properties = [
-    { name: "abc", phone: "+7345782", flag: "🇵🇰" },
-    { name: "sdf", phone: "+7345782", flag: "🇵🇰" },
-    { name: "Test 1", phone: "+7345782", flag: "🇮🇳" },
-    { name: "Test ", phone: "000000", flag: "🇦🇫" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getRentalContractsAsync } from "../store/rentalContractSlice";
 
 const Rentals = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const rentalContracts = useSelector((state) => state.rentalContract.rentalContracts);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getRentalContractsAsync());
+    }, [])
+
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Rentals</h1>
 
@@ -37,7 +39,7 @@ const Rentals = () => {
                 </div>
 
                 <RentalsTable
-                    clients={properties} />
+                    rentalContract={rentalContracts} />
             </div>
 
             <RentalsFormModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />

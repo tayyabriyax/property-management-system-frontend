@@ -1,6 +1,6 @@
 import React from "react";
 
-const RentalsTable = ({ clients }) => {
+const RentalsTable = ({ rentalContract }) => {
   return (
     <div className="overflow-x-auto rounded-b-lg">
       <table className="min-w-full bg-white">
@@ -13,12 +13,12 @@ const RentalsTable = ({ clients }) => {
           </tr>
         </thead>
         <tbody className="text-gray-600">
-          {clients.map((client, index) => (
+          {rentalContract.map((x, index) => (
             <tr key={index} className="border-b hover:bg-gray-50">
-              <td className="px-6 py-4">{client.name}</td>
-              <td className="px-6 py-4">{client.phone}</td>
-              <td className="px-6 py-4">{client.address}</td>
-              <td className="px-6 py-4">{client.cnic}</td>
+              <td className="px-6 py-4">{x.name}</td>
+              <td className="px-6 py-4">{x.phone}</td>
+              <td className="px-6 py-4">{x.address}</td>
+              <td className="px-6 py-4">{x.cnic}</td>
             </tr>
           ))}
         </tbody>

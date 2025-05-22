@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RentalsTable from "../components/RentalsTable";
-import RentalsFormModal from "../components/RentalsFormModal";
 import BrokerFormModal from "../components/BrokerFormModal";
-
-const properties = [
-    { name: "abc", phone: "+7345782", flag: "🇵🇰" },
-    { name: "sdf", phone: "+7345782", flag: "🇵🇰" },
-    { name: "Test 1", phone: "+7345782", flag: "🇮🇳" },
-    { name: "Test ", phone: "000000", flag: "🇦🇫" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getBrokersAsync } from "../store/brokerSlice";
 
 const Broker = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const brokers = useSelector((state) => state.broker.brokers);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getBrokersAsync());
+    }, [])
+
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Broker</h1>
 
@@ -37,7 +39,7 @@ const Broker = () => {
                 </div>
 
                 <RentalsTable
-                    clients={properties} />
+                    rentalContract={brokers} />
             </div>
 
             <BrokerFormModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
