@@ -1,12 +1,31 @@
-import React, { useState } from "react";
-import ViewModal from "../components/ViewModal";
+import { useEffect, useState } from "react";
+import SetupModal from "../components/SetupModal";
+import { useDispatch, useSelector } from "react-redux";
+import { createClientAsync, getBanksAsync } from "../store/bankSlice";
+import SetupTable from "../components/SetupTable";
 
 const Bank = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
+    const [bankData, setBankData] = useState({ name: "", remarks: "" });
+
+    const banks = useSelector((state) => state.bank.banks);
+    const loadData = useSelector((state) => state.bank.loadData);
+
+    const dispatch = useDispatch();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createClientAsync(bankData));
+        setModalOpen(false);
+    }
+
+    useEffect(() => {
+        dispatch(getBanksAsync());
+    }, [loadData])
 
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Banks</h1>
 
@@ -26,9 +45,17 @@ const Bank = () => {
                         Add New
                     </button>
                 </div>
+
+                <SetupTable
+                    items={banks} />
             </div>
 
-            <ViewModal label={"Bank"} isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+            <SetupModal
+                label={"Bank"}
+                isOpen={isModalOpen}
+                setData={setBankData}
+                onSubmit={handleSubmit}
+                onClose={() => setModalOpen(false)} />
         </div>
     );
 };

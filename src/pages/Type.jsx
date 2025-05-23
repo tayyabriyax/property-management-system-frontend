@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import ViewModal from "../components/ViewModal";
+import { useState } from "react";
+import SetupModal from "../components/SetupModal";
 
 const Type = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [isModalOpen, setModalOpen] = useState(false);
 
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Types</h1>
 
@@ -28,7 +28,7 @@ const Type = () => {
                 </div>
             </div>
 
-            <ViewModal label={"Type"} isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+            <SetupModal label={"Type"} isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
         </div>
     );
 };

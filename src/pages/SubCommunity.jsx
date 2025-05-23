@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ViewModal from "../components/ViewModal";
 import SubCommunityModal from "../components/SubCommunityModal";
 
 const SubCommunity = () => {
@@ -7,7 +6,7 @@ const SubCommunity = () => {
     const [isModalOpen, setModalOpen] = useState(false);
 
     return (
-        <div className="p-2 bg-[#F8FAFC] min-h-screen">
+        <div className="p-6 bg-[#F8FAFC] min-h-screen">
 
             <h1 className="text-3xl font-bold text-[#0F172A] mb-4">Sub Community</h1>
 
